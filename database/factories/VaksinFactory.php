@@ -21,8 +21,14 @@ class VaksinFactory extends Factory
      */
     public function definition()
     {
+        $gender = $this->faker->randomElement(['male', 'female']);
         return [
-            //
+            'jenis_pasien'  => $gender,
+            'nama_lengkap'  => $this->faker->name($gender),
+            'tanggal_lahir' => $this->faker->date(),
+            'no_handphone' => $this->faker->phoneNumber(),
+            'email' => $this->faker->safeEmail(),
+            'lokasi_pemeriksaan' => $this->faker->randomElement(['RS Siloam', 'RS Lavayette', 'RS Basuki Rahmat'])
         ];
     }
 }

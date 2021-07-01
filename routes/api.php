@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\VaksinController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('vaksin', [VaksinController::class, 'index'])->name('vaksin.index');
+Route::post('vaksin', [VaksinController::class, 'store'])->name('vaksin.store');
+Route::put('vaksin/{id}', [VaksinController::class, 'update'])->name('vaksin.update');
+Route::delete('vaksin/{id}', [VaksinController::class, 'destroy'])->name('vaksin.destroy');
